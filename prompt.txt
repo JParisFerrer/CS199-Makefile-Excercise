@@ -1,0 +1,25 @@
+Create a makefile that will generate the following three executables:
+    - myprog1
+    - myprog2
+    - myprog3
+Compile myprog1 and it's dependencies with debugging symbols, and the other
+two without (bonus points if you can make it so none of myprog2/3's
+dependencies have debugging symbols, even those shared with myprog1).
+
+You should be compiling for C++11.
+
+Running `make` with no arguments should compile all three executables
+
+You need to write your makefile so that the minimum amount of work must be
+done - if I change one header file, you should not recompile every dependency
+of every target which uses that header file. You are going to need object
+files for this part
+
+make sure that you setup the dependencies correctly - changing any of the
+files any of the three programs needs should recompile only the neccessary
+files and programs. For example, if myprog2 depends on something that myprog1
+does not, then changing that dependency should NOT recompile myprog1, just
+myprog2 (and myprog3 if it also depended on it).
+
+You should make use of macros wherever necessary - assume that the user may
+want to change compiler and compiler/linker flags at any time.
